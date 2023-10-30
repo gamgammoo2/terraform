@@ -1,0 +1,22 @@
+#cloud-config
+# repo_update: true
+# repo_upgrade: all
+
+# packages:
+#  - httpd
+#  - mariadb-server
+
+# docker 최신버전 -> get.docker.com  ->easy install cli 복사 -> -c 다음의 "" 안에 넣어주기
+runcmd:
+ - [ sh, -c, "curl -fsSL https://get.docker.com -o install-docker.sh" ]
+ - [ sh, -c, "cat install-docker.sh" ]
+ - [ sh, -c, "sh install-docker.sh --dry-run" ]
+ - [ sh, -c, "sudo sh install-docker.sh" ]
+#  - systemctl start httpd
+#  - sudo systemctl enable httpd
+#  - [ sh, -c, "usermod -a -G apache ec2-user" ]
+#  - [ sh, -c, "chown -R ec2-user:apache /var/www" ]
+#  - chmod 2775 /var/www
+#  - [ find, /var/www, -type, d, -exec, chmod, 2775, {}, \; ]
+#  - [ find, /var/www, -type, f, -exec, chmod, 0664, {}, \; ]
+#  - [ sh, -c, 'echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php' ]
